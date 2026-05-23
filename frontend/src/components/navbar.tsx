@@ -15,11 +15,16 @@ export default function Navbar() {
           Lumina
         </Link>
         <div className="flex items-center justify-between flex-1">
-          <nav aria-label="Main navigation">
-            <ul className="flex gap-6 text-sm text-muted-foreground">
+          <nav aria-label="Main">
+            <ul className="flex gap-8 text-sm text-muted-foreground">
               {navLinks.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href}>{link.name}</Link>
+                  <Link
+                    className="hover:text-foreground transition-colors"
+                    href={link.href}
+                  >
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
