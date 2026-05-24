@@ -17,7 +17,7 @@ import { Mail, Phone } from "lucide-react";
 
 export default function ProfileForm() {
   return (
-    <Card className="max-w-3xl">
+    <Card className="max-w-3xl mb-14">
       <form className="px-6">
         <FieldGroup>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

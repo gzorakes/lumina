@@ -1,4 +1,5 @@
 import AvatarCard from "@/components/avatar-card";
+import DeleteAccountCard from "@/components/delete-account-card";
 import ProfileForm from "@/components/profile-form";
 
 export default function AccountPage() {
@@ -15,6 +16,8 @@ export default function AccountPage() {
       <AvatarCard />
 
       <ProfileForm />
+
+      <DeleteAccountCard />
     </section>
   );
 }

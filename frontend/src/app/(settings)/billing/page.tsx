@@ -1,3 +1,7 @@
 export default function BillingPage() {
-  return <div>Billing</div>;
+  return (
+    <div className="flex h-[50%] items-center justify-center">
+      <h1 className="text-2xl font-semibold">Billing Page</h1>
+    </div>
+  );
 }
