@@ -21,7 +21,7 @@ export default function SideNavigation() {
       </h2>
 
       <nav className="px-4 md:py-4">
-        <ul className="text-sm text-muted-foreground pb-4 border-b space-y-2">
+        <ul className="text-sm text-muted-foreground pb-4 border-b-2 space-y-2">
           {sideNavLinks.map((link) => {
             const isActive = pathname === link.href;
             const Icon = link.icon;

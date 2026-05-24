@@ -1,9 +1,10 @@
 import AvatarCard from "@/components/avatar-card";
+import ProfileForm from "@/components/profile-form";
 
 export default function AccountPage() {
   return (
     <section className="px-6">
-      <div className="pb-10">
+      <div className="mb-10">
         <h1 className="text-4xl font-bold">Profile Information</h1>
         <p className="text-muted-foreground">
           Manage your personal presence and account preferences across the
@@ -12,6 +13,8 @@ export default function AccountPage() {
       </div>
 
       <AvatarCard />
+
+      <ProfileForm />
     </section>
   );
 }

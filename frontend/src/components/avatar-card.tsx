@@ -3,7 +3,7 @@ import { Camera } from "lucide-react";
 
 export default function AvatarCard() {
   return (
-    <Card className="max-w-3xl">
+    <Card className="max-w-3xl mb-6">
       <div className="flex items-center gap-6 px-6">
         <div className="relative">
           <div className="size-20 md:size-24 rounded-full bg-muted overflow-hidden">
