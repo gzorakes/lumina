@@ -20,13 +20,9 @@ import { profileSchema, type ProfileFormValues } from "@/lib/profile-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Mail, Phone } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useProfileSubmit } from "@/hooks/use-profile-submit";
 
 export default function ProfileForm() {
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
-
   const {
     register,
     handleSubmit,
@@ -36,28 +32,12 @@ export default function ProfileForm() {
     resolver: zodResolver(profileSchema),
   });
 
+  const { submit, status } = useProfileSubmit();
+
   const onSubmit = async (data: ProfileFormValues) => {
-    setSubmitStatus("idle");
-    try {
-      const res = await fetch("http://localhost:3001/profile", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (!res.ok) {
-        setSubmitStatus("error");
-        return;
-      }
-
-      setSubmitStatus("success");
-      reset();
-    } catch {
-      setSubmitStatus("error");
-    }
+    const ok = await submit(data);
+    if (ok) reset();
   };
-
-  console.log(errors);
 
   return (
     <Card className="max-w-3xl mb-14">
@@ -143,12 +123,12 @@ export default function ProfileForm() {
             {isSubmitting ? "Saving..." : "Save Changes"}
           </Button>
         </div>
-        {submitStatus === "success" && (
+        {status === "success" && (
           <p className="text-sm text-green-600 mt-4 text-right">
             Profile saved successfully.
           </p>
         )}
-        {submitStatus === "error" && (
+        {status === "error" && (
           <p className="text-sm text-destructive mt-4 text-right">
             Something went wrong. Please try again.
           </p>
