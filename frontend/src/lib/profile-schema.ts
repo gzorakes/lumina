@@ -6,7 +6,7 @@ export const profileSchema = z.object({
     .trim()
     .min(1, "Name cannot be empty")
     .min(2, "Name must be at least 2 characters")
-    .max(40, "Name must be at most 80 characters"),
+    .max(40, "Name must be at most 40 characters"),
 
   dateOfBirth: z
     .string()

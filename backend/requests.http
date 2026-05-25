@@ -1,0 +1,23 @@
+### Valid profile — should succeed (201)
+POST http://localhost:3001/profile
+Content-Type: application/json
+
+{
+  "fullName": "Alex Rivera",
+  "dateOfBirth": "1992-05-15",
+  "email": "alex@lumina.io",
+  "phone": "+1 (555) 000-0000",
+  "bio": "Product designer"
+}
+
+### Invalid profile — should fail (400)
+POST http://localhost:3001/profile
+Content-Type: application/json
+
+{
+  "fullName": "A",
+  "dateOfBirth": "1992-05-15",
+  "email": "not-an-email",
+  "phone": "123",
+  "bio": "Product designer"
+}
