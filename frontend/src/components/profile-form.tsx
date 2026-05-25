@@ -20,18 +20,41 @@ import { profileSchema, type ProfileFormValues } from "@/lib/profile-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Mail, Phone } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 export default function ProfileForm() {
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<ProfileFormValues>({
     resolver: zodResolver(profileSchema),
   });
 
-  const onSubmit = (data: ProfileFormValues) => {
-    console.log(data);
+  const onSubmit = async (data: ProfileFormValues) => {
+    setSubmitStatus("idle");
+    try {
+      const res = await fetch("http://localhost:3001/profile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        setSubmitStatus("error");
+        return;
+      }
+
+      setSubmitStatus("success");
+      reset();
+    } catch {
+      setSubmitStatus("error");
+    }
   };
 
   console.log(errors);
@@ -67,7 +90,7 @@ export default function ProfileForm() {
                 <InputGroupInput
                   {...register("email")}
                   id="email"
-                  type="email"
+                  type="text"
                   placeholder="alex.rivera@lumina.io"
                 />
                 <InputGroupAddon>
@@ -116,10 +139,20 @@ export default function ProfileForm() {
           >
             Cancel
           </Button>
-          <Button type="submit" className="px-8">
-            Save Changes
+          <Button className="px-8" disabled={isSubmitting}>
+            {isSubmitting ? "Saving..." : "Save Changes"}
           </Button>
         </div>
+        {submitStatus === "success" && (
+          <p className="text-sm text-green-600 mt-4 text-right">
+            Profile saved successfully.
+          </p>
+        )}
+        {submitStatus === "error" && (
+          <p className="text-sm text-destructive mt-4 text-right">
+            Something went wrong. Please try again.
+          </p>
+        )}
       </form>
     </Card>
   );
