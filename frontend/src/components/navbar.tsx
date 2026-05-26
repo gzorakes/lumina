@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { LogIn } from "lucide-react";
 
 const navLinks = [
   { name: "Features", href: "/" },
@@ -30,7 +31,10 @@ export default function Navbar() {
             </ul>
           </nav>
 
-          <Button variant="ghost">Sign In</Button>
+          <Button variant="ghost" aria-label="Sign In">
+            <LogIn className="sm:hidden size-5" />
+            <span className="hidden sm:inline">Sign In</span>
+          </Button>
         </div>
       </div>
     </header>

@@ -15,13 +15,13 @@ const sideNavLinks = [
 export default function SideNavigation() {
   const pathname = usePathname();
   return (
-    <aside className="lg:w-1/5">
+    <aside className="flex justify-between md:block lg:w-1/5 mb-6 md:mb-0">
       <h2 className="font-semibold text-2xl px-8 pb-4 hidden md:block">
         Settings
       </h2>
 
       <nav className="px-4 md:py-4">
-        <ul className="text-sm text-muted-foreground pb-4 border-b-2 space-y-2">
+        <ul className="text-sm text-muted-foreground flex md:block md:pb-4 md:border-b-2 md:space-y-2">
           {sideNavLinks.map((link) => {
             const isActive = pathname === link.href;
             const Icon = link.icon;
@@ -47,7 +47,7 @@ export default function SideNavigation() {
       </nav>
       <Link
         href="/"
-        className="flex items-center gap-4 px-8 py-2 text-sm font-medium text-red-700"
+        className="flex items-center gap-4 px-8 md:py-2 text-sm font-medium text-red-700"
       >
         <LogOut strokeWidth={3} className="size-4" />
         <span className="sr-only md:not-sr-only">Log Out</span>

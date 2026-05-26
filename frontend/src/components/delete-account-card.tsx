@@ -4,8 +4,8 @@ import { Card } from "@/components/ui/card";
 export default function DeleteAccountCard() {
   return (
     <Card className="max-w-3xl border-destructive/30 bg-destructive/3">
-      <div className="flex items-center justify-between gap-6 px-6">
-        <div className="space-y-1">
+      <div className="md:flex block items-center justify-between gap-6 px-6">
+        <div className="space-y-1 mb-4 md:mb-0">
           <h2 className="text-lg font-semibold text-red-700">Delete Account</h2>
           <p className="text-sm text-muted-foreground">
             Permanently remove your account and all associated data. This action

@@ -1,13 +1,14 @@
 import { Card } from "@/components/ui/card";
 import { Camera } from "lucide-react";
+import Image from "next/image";
 
 export default function AvatarCard() {
   return (
     <Card className="max-w-3xl mb-6">
       <div className="flex items-center gap-6 px-6">
         <div className="relative">
-          <div className="size-20 md:size-24 rounded-full bg-muted overflow-hidden">
-            {/* IMAGE HERE */}
+          <div className="size-20 md:size-24 rounded-full bg-muted relative overflow-hidden">
+            <Image src="/test.jpg" fill alt="profile image" />
           </div>
           <button
             type="button"
